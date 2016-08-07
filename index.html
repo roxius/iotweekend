@@ -5,7 +5,7 @@
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="mqttws31.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/eclipse/paho.mqtt.javascript/master/src/mqttws31.js"></script>
 <script type="text/javascript">
 /*
 by @bordignon on twitter
@@ -19,7 +19,7 @@ public broker and topic you can use for testing.
 //settings BEGIN
 	var MQTTbroker = 'iot.eclipse.org';
 	var MQTTport = 8080;
-	var MQTTsubTopic = 'espRoxius'; //works with wildcard # and + topics dynamically now
+	var MQTTsubTopic = 'roxius'; //works with wildcard # and + topics dynamically now
 //settings END
 	var chart; // global variuable for chart
 	var dataTopics = new Array();
