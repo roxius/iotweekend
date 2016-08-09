@@ -130,6 +130,9 @@ public broker and topic you can use for testing.
 	        series: []
 	    });
 	});
+
+	client.publish("roxiusLeds", "1", { qos: 0, retained: false });
+
 </script>
 
 <script src="http://code.highcharts.com/stock/highstock.js"></script>
