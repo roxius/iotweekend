@@ -82,12 +82,6 @@ public broker and topic you can use for testing.
 	};
 //function that is called once the document has loaded
 	function init() {
-		//i find i have to set this to false if i have trouble with timezones.
-		Highcharts.setOptions({
-			global: {
-				useUTC: false
-			}
-		});
 		// Connect to MQTT broker
 		client.connect(options);
 
@@ -109,58 +103,14 @@ public broker and topic you can use for testing.
 		client.send(message);
 	}
 
-//this adds the plots to the chart
-    function plot(point, chartno) {
-    	console.log(point);
-
-	        var series = chart.series[0],
-	            shift = series.data.length > 20; // shift if the series is
-	                                             // longer than 20
-	        // add the point
-	        chart.series[chartno].addPoint(point, true, shift);
-	};
-//settings for the chart
-	$(document).ready(function() {
-	    chart = new Highcharts.Chart({
-	        chart: {
-	            renderTo: 'container',
-	            defaultSeriesType: 'spline'
-	        },
-	        title: {
-	            text: 'Plotting Live websockets data from a MQTT topic'
-	        },
-	        subtitle: {
-                                text: 'broker: ' + MQTTbroker + ' | port: ' + MQTTport + ' | topic : ' + MQTTsubTopic
-                        },
-	        xAxis: {
-	            type: 'datetime',
-	            tickPixelInterval: 150,
-	            maxZoom: 20 * 1000
-	        },
-	        yAxis: {
-	            minPadding: 0.2,
-	            maxPadding: 0.2,
-	            title: {
-	                text: 'Value',
-	                margin: 80
-	            }
-	        },
-	        series: []
-	    });
-	});
-
 </script>
 
-<script src="http://code.highcharts.com/stock/highstock.js"></script>
-<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
 
 </head>
 <body>
 <body onload="init();"><!--Start the javascript ball rolling and connect to the mqtt broker-->
 
-<h1> IoT Weekend Recife 2016 </h1>
-<h2> NodeMCU com Temp - Umid e Luz! </h2>
-
+ <button onclick="turnOn()">Turn On</button> <br /><br /> <button onclick="turnOff()">Turn Off</button>
 
 <div id="container" style="height: 500px; min-width: 500px"></div><!-- this the placeholder for the chart-->
 
