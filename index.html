@@ -90,6 +90,13 @@ public broker and topic you can use for testing.
 		});
 		// Connect to MQTT broker
 		client.connect(options);
+
+		client.subscribe("/roxiusLeds");
+		message = new Paho.MQTT.Message("1");
+		message.destinationName = "/roxiusLeds";
+		client.send(message);
+
+
 	};
 //this adds the plots to the chart
     function plot(point, chartno) {
@@ -130,8 +137,6 @@ public broker and topic you can use for testing.
 	        series: []
 	    });
 	});
-
-	client.publish("roxiusLeds", "1", { qos: 0, retained: false });
 
 </script>
 
