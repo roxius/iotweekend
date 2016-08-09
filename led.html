@@ -19,7 +19,7 @@ public broker and topic you can use for testing.
 //settings BEGIN
 	var MQTTbroker = 'test.mosquitto.org';
 	var MQTTport = 8080;
-	var MQTTsubTopic = 'roxius'; //works with wildcard # and + topics dynamically now
+	var MQTTsubTopic = 'roxiusLeds'; //works with wildcard # and + topics dynamically now
 //settings END
 	var chart; // global variuable for chart
 	var dataTopics = new Array();
@@ -91,13 +91,23 @@ public broker and topic you can use for testing.
 		// Connect to MQTT broker
 		client.connect(options);
 
-		client.subscribe("/roxiusLeds");
-		message = new Paho.MQTT.Message("1");
-		message.destinationName = "/roxiusLeds";
-		client.send(message);
-
 
 	};
+
+	function turnOn() {
+		client.subscribe("roxiusLeds");
+		message = new Paho.MQTT.Message("1");
+		message.destinationName = "roxiusLeds";
+		client.send(message);
+	}
+
+	function turnOff() {
+		client.subscribe("roxiusLeds");
+		message = new Paho.MQTT.Message("0");
+		message.destinationName = "roxiusLeds";
+		client.send(message);
+	}
+
 //this adds the plots to the chart
     function plot(point, chartno) {
     	console.log(point);
